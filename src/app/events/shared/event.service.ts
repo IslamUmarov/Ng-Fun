@@ -3,8 +3,12 @@ import { Http } from "@angular/http";
 
 @Injectable()
 export class EventService {
-  getEvent(): any {
+  getEventList(): any {
     return this.EVENTS;
+  }
+
+  getEvent(id: number) {
+    return this.EVENTS.find((event) => event.id == id);
   }
 
   EVENTS = [
