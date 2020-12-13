@@ -8,7 +8,7 @@ export class EventService {
     setTimeout(() => {
       subject.next(this.EVENTS);
       subject.complete();
-    }, 3000);
+    }, 100);
     return subject;
   }
 
