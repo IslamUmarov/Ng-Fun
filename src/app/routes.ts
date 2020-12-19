@@ -1,12 +1,12 @@
 import { Routes } from "@angular/router";
-import { from } from "rxjs";
+import {
+  EventDetailsComponent,
+  EventRouterActivator,
+  EventListResolverService,
+  EventsListComponent,
+} from "./events/index";
 import { Error404Component } from "./errors/404.component";
 import { CreateEventComponent } from "./events/create-event.component";
-import { EventDetailsComponent } from "./events/event-details/event-details.component";
-import { EventRouterActivator } from "./events/event-details/event-route-activator.service";
-import { EventListResolverService } from "./events/events-list-resolve.service";
-import { EventsListComponent } from "./events/events-list.component";
-
 export const appRoutes: Routes = [
   {
     path: "events/new",
