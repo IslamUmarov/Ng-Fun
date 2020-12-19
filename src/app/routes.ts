@@ -1,4 +1,5 @@
 import { Routes } from "@angular/router";
+import { from } from "rxjs";
 import { Error404Component } from "./errors/404.component";
 import { CreateEventComponent } from "./events/create-event.component";
 import { EventDetailsComponent } from "./events/event-details/event-details.component";
@@ -24,4 +25,5 @@ export const appRoutes: Routes = [
   },
   { path: "404", component: Error404Component },
   { path: "", pathMatch: "full", redirectTo: "/events" },
+  { path: "user", loadChildren: "./user/user.module#UserModule" },
 ];
