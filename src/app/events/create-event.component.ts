@@ -1,30 +1,25 @@
-import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
+import { Component } from '@angular/core'
+import { Router } from '@angular/router'
 
 @Component({
-  selector: "create-event",
   template: `
     <h1>New Event</h1>
-    <hr />
+    <hr>
     <div class="col-md-6">
       <h3>[Create Event Form will go here]</h3>
-      <br />
-      <br />
+      <br/>
+      <br/>
       <button type="submit" class="btn btn-primary">Save</button>
-      <button type="button" (click)="cancelClick()" class="btn btn-default">
-        Cancel
-      </button>
+      <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
     </div>
-  `,
+  `
 })
-export class CreateEventComponent implements OnInit {
-  isDirty: boolean = false;
+export class CreateEventComponent {
+  isDirty:boolean = true
+  constructor(private router: Router) {
 
-  constructor(private routerEvent: Router) {}
-
-  ngOnInit() {}
-
-  cancelClick() {
-    this.routerEvent.navigate(["/events"]);
+  }
+  cancel() {
+    this.router.navigate(['/events'])
   }
 }
