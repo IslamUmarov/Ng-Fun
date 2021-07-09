@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core'
-import { BrowserModule } from '@angular/platform-browser'
-import { RouterModule, ActivatedRouteSnapshot } from '@angular/router'
+import { NgModule } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
+import { RouterModule, ActivatedRouteSnapshot } from "@angular/router";
 
 import {
   EventsListComponent,
@@ -9,22 +9,25 @@ import {
   EventDetailsComponent,
   CreateEventComponent,
   EventRouteActivator,
-  EventListResolver
-} from './events/index'
-import { EventsAppComponent } from './events-app.component'
-import { NavBarComponent } from './nav/nav-bar.component'
-import { ToastrService } from './common/toastr.service'
-import { appRoutes } from './routes'
-import { Error404Component } from './errors/404.component'
-import { AuthService } from './user/auth.service'
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+  EventListResolver,
+  CreateSessionComponent,
+} from "./events/index";
+import { EventsAppComponent } from "./events-app.component";
+import { NavBarComponent } from "./nav/nav-bar.component";
+import { ToastrService } from "./common/toastr.service";
+import { appRoutes } from "./routes";
+import { Error404Component } from "./errors/404.component";
+import { AuthService } from "./user/auth.service";
+import { FormBuilder, FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { CommonModule } from "@angular/common";
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
+    CommonModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
   ],
   declarations: [
     EventsAppComponent,
@@ -33,25 +36,29 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
     EventDetailsComponent,
     NavBarComponent,
     CreateEventComponent,
-    Error404Component
+    CreateSessionComponent,
+    Error404Component,
   ],
   providers: [
     AuthService,
     EventService,
     ToastrService,
+    FormBuilder,
     EventRouteActivator,
     EventListResolver,
     {
-      provide: 'canDeactivateCreateEvent',
-      useValue: checkDirtyState
-    }
+      provide: "canDeactivateCreateEvent",
+      useValue: checkDirtyState,
+    },
   ],
-  bootstrap: [EventsAppComponent]
+  bootstrap: [EventsAppComponent],
 })
-export class AppModule { }
+export class AppModule {}
 
 function checkDirtyState(component: CreateEventComponent) {
   if (component.isDirty)
-    return window.confirm('You have not saved this event, do you really want to cancel?')
-  return true
+    return window.confirm(
+      "You have not saved this event, do you really want to cancel?"
+    );
+  return true;
 }
