@@ -11,6 +11,8 @@ import {
   EventRouteActivator,
   EventListResolver,
   CreateSessionComponent,
+  SessionListComponent,
+  DurationPipe,
 } from "./events/index";
 import { EventsAppComponent } from "./events-app.component";
 import { NavBarComponent } from "./nav/nav-bar.component";
@@ -20,6 +22,7 @@ import { Error404Component } from "./errors/404.component";
 import { AuthService } from "./user/auth.service";
 import { FormBuilder, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
+import { CollapsibleWellComponent } from "./common/collapsible-well.component";
 
 @NgModule({
   imports: [
@@ -38,6 +41,9 @@ import { CommonModule } from "@angular/common";
     CreateEventComponent,
     CreateSessionComponent,
     Error404Component,
+    SessionListComponent,
+    CollapsibleWellComponent,
+    DurationPipe
   ],
   providers: [
     AuthService,
@@ -53,7 +59,7 @@ import { CommonModule } from "@angular/common";
   ],
   bootstrap: [EventsAppComponent],
 })
-export class AppModule {}
+export class AppModule { }
 
 function checkDirtyState(component: CreateEventComponent) {
   if (component.isDirty)
