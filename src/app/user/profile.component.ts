@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, Inject, inject } from '@angular/core'
 import { FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
+import { TOASTR_TOKEN, Toastr } from '../common/toastr.service';
 import { AuthService } from './auth.service';
 
 @Component({
-  templateUrl:'./profile.component.html',
-  styles:[`
+  templateUrl: './profile.component.html',
+  styles: [`
   em {float: right; color:#E05C65; padding-left:10px;}
   .error input { background-color:#E3C3C5;}
   .error ::-webkit-input-placeholder {color: #999;}
@@ -20,11 +21,11 @@ export class ProfileComponent implements OnInit {
   private firstName: FormControl
   private lastName: FormControl
 
-  constructor(private auth: AuthService, public router: Router){
+  constructor(private auth: AuthService, public router: Router, @Inject(TOASTR_TOKEN) public toastr: Toastr) {
 
   }
-  ngOnInit(){
-    this.firstName = new FormControl(this.auth.currentUser.firstName,[ Validators.required, Validators.pattern('[a-zA-Z].*')])
+  ngOnInit() {
+    this.firstName = new FormControl(this.auth.currentUser.firstName, [Validators.required, Validators.pattern('[a-zA-Z].*')])
     this.lastName = new FormControl(this.auth.currentUser.lastName, Validators.required)
 
     this.profileForm = new FormGroup({
@@ -33,21 +34,21 @@ export class ProfileComponent implements OnInit {
     })
   }
 
-  validateLastName(){
+  validateLastName() {
     return this.lastName.valid || this.lastName.untouched
   }
-  validateFirstName(){
+  validateFirstName() {
     return this.firstName.valid || this.firstName.untouched
   }
 
-  cancel(){
+  cancel() {
     this.router.navigate(['events'])
   }
- 
-  saveProfile(formValues){
-    if(this.profileForm.valid){
+
+  saveProfile(formValues) {
+    if (this.profileForm.valid) {
       this.auth.updateProfile(formValues.firstName, formValues.lastName);
-      this.router.navigate(['events'])
+      this.toastr.success('Profile updated successfully!')
     }
   }
 }
