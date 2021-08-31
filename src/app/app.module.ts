@@ -23,7 +23,7 @@ import { AuthService } from "./user/auth.service";
 import { FormBuilder, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
 
-let toastr: Toastr = window["toastr"];
+let toastr: Toastr =  window["toastr"];
 let jQuery: Toastr = window["$"];
 @NgModule({
   imports: [
