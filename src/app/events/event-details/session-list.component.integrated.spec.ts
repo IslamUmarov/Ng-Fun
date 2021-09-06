@@ -1,4 +1,4 @@
-import { DebugElement } from "@angular/core"
+import { Component, DebugElement, Input, NO_ERRORS_SCHEMA } from "@angular/core"
 import { ComponentFixture, TestBed } from "@angular/core/testing"
 import { By } from "@angular/platform-browser"
 import { CollapsibleWellComponent } from "src/app/common"
@@ -20,15 +20,16 @@ describe('SessionListComponent', () => {
         TestBed.configureTestingModule({
             declarations: [
                 SessionListComponent,
-                CollapsibleWellComponent,
-                UpvoteComponent,
                 DurationPipe
             ],
             providers: [
                 { provide: AuthService, useValue: mockAuthService },
                 { provide: VoterService, useValue: mockVoterService }
+            ],
+            schemas: [
+                NO_ERRORS_SCHEMA
             ]
-        });
+        })
         fixture = TestBed.createComponent(SessionListComponent);
         component = fixture.componentInstance;
         debugElement = fixture.debugElement;
