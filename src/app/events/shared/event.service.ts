@@ -32,6 +32,12 @@ export class EventService {
     );
   }
 
+  angularConnect() {
+    let options = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
+    return this.http.get<IEvent[]>('/api/events').pipe(
+      catchError(this.handleError<IEvent[]>('getEvents', []))
+    );
+  }
 
   searchSessions(searchTerm: string): Observable<ISession[]> {
     return this.http.get<ISession[]>('/api/sessions/search?search=' + searchTerm).pipe(
