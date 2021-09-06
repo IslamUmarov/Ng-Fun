@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { RouterModule, ActivatedRouteSnapshot } from "@angular/router";
+import { HttpClientModule } from "@angular/common/http";
 
 import {
   EventsListComponent,
@@ -8,12 +9,12 @@ import {
   EventService,
   EventDetailsComponent,
   CreateEventComponent,
-  EventRouteActivator,
   EventListResolver,
   CreateSessionComponent,
   SessionListComponent,
   DurationPipe,
   UpvoteComponent,
+  EventResolver,
 } from "./events/index";
 import { JQ_TOKEN, TOASTR_TOKEN, Toastr, CollapsibleWellComponent, SimpleModalComponent, ModalTriggerDirective } from "./common/index";
 import { EventsAppComponent } from "./events-app.component";
@@ -32,6 +33,7 @@ let jQuery: Toastr = window["$"];
     BrowserModule,
     FormsModule,
     CommonModule,
+    HttpClientModule,
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
   ],
@@ -57,7 +59,7 @@ let jQuery: Toastr = window["$"];
     { provide: TOASTR_TOKEN, useValue: toastr },
     { provide: JQ_TOKEN, useValue: jQuery },
     FormBuilder,
-    EventRouteActivator,
+    EventResolver,
     VoterService,
     EventListResolver,
     {

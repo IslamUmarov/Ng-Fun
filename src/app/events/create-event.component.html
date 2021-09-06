@@ -33,7 +33,8 @@
         <div ngModelGroup="location" #locationGroup="ngModelGroup" validateLocation>
             <div class="form-group">
                 <label for="address">Event Location:</label>
-                <em *ngIf="locationGroup?.invalid && locationGroup?.touched">You must enter either the full location OR an</em>
+                <em *ngIf="locationGroup?.invalid && locationGroup?.touched">You must enter either the full location OR
+                    an</em>
                 <input (ngModel)="event.location.address" name="address" id="address" type="text" class="form-control"
                     placeholder="Address of event..." />
             </div>
@@ -62,7 +63,7 @@
             <em
                 *ngIf="newEventForm.controls.imageUrl?.invalid && newEventForm.controls.imageUrl?.touched  && newEventForm.controls.imageUrl?.errors.pattern">Must
                 be a png or jpg url</em>
-            <input (ngModel)="newEvent.imageUrl" name="imageUrl" required pattern=".*\/.*.(png|jpg)" id="imageUrl"
+            <input (ngModel)="event.imageUrl" name="imageUrl" required pattern=".*\/.*.(png|jpg)" id="imageUrl"
                 type="text" class="form-control" placeholder="url of image..." />
             <img [src]="newEventForm.controls.imageUrl.value" *ngIf="newEventForm.controls.imageUrl.valid" />
         </div>
