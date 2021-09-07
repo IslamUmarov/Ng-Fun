@@ -3,7 +3,7 @@ import { EventDetailsComponent } from "./events/event-details/event-details.comp
 import { CreateEventComponent } from "./events/create-event.component";
 import { Error404Component } from "./errors/404.component";
 import { EventListResolver } from "./events/events-list-resolver.service";
-import { Routes, ROUTES } from "@angular/router";
+import { Routes } from "@angular/router";
 import { CreateSessionComponent, EventResolver } from "./events";
 import { } from "./events/event-details/index";
 
@@ -28,7 +28,6 @@ export const appRoutes: Routes = [
   { path: "", redirectTo: "/events", pathMatch: "full" },
   {
     path: "user",
-    loadChildren: () =>
-      import("src/app/user/user.module").then((m) => m.UserModule),
+    loadChildren: () => import("./user/user.module").then(m => m.UserModule),
   },
 ];

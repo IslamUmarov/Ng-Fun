@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
-import { RouterModule, ActivatedRouteSnapshot } from "@angular/router";
+import { RouterModule } from "@angular/router";
 import { HttpClientModule } from "@angular/common/http";
 
 import {
@@ -16,7 +16,14 @@ import {
   UpvoteComponent,
   EventResolver,
 } from "./events/index";
-import { JQ_TOKEN, TOASTR_TOKEN, Toastr, CollapsibleWellComponent, SimpleModalComponent, ModalTriggerDirective } from "./common/index";
+import {
+  JQ_TOKEN,
+  TOASTR_TOKEN,
+  Toastr,
+  CollapsibleWellComponent,
+  SimpleModalComponent,
+  ModalTriggerDirective,
+} from "./common/index";
 import { EventsAppComponent } from "./events-app.component";
 import { NavBarComponent } from "./nav/nav-bar.component";
 import { appRoutes } from "./routes";
@@ -51,7 +58,7 @@ const jQuery: Toastr = window["$"];
     DurationPipe,
     ModalTriggerDirective,
     SimpleModalComponent,
-    UpvoteComponent
+    UpvoteComponent,
   ],
   providers: [
     AuthService,
@@ -69,9 +76,9 @@ const jQuery: Toastr = window["$"];
   ],
   bootstrap: [EventsAppComponent],
 })
-export class AppModule { }
+export class AppModule {}
 
-function checkDirtyState(component: CreateEventComponent) {
+export function checkDirtyState(component: CreateEventComponent): boolean {
   if (component.isDirty)
     return window.confirm(
       "You have not saved this event, do you really want to cancel?"
