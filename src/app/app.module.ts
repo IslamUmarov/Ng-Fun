@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
-import { RouterModule } from "@angular/router";
+import { PreloadAllModules, RouterModule } from "@angular/router";
 import { HttpClientModule } from "@angular/common/http";
 
 import {
@@ -32,6 +32,7 @@ import { AuthService } from "./user/auth.service";
 import { FormBuilder, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
 import { VoterService } from "./events/event-details/voter.service";
+import { LocationValidator } from "./events/location-validator.directive";
 
 const toastr: Toastr = window["toastr"];
 const jQuery: Toastr = window["$"];
@@ -42,7 +43,7 @@ const jQuery: Toastr = window["$"];
     CommonModule,
     HttpClientModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(appRoutes, { preloadingStrategy: PreloadAllModules }),
   ],
   declarations: [
     EventsAppComponent,
@@ -52,6 +53,7 @@ const jQuery: Toastr = window["$"];
     NavBarComponent,
     CreateEventComponent,
     CreateSessionComponent,
+    LocationValidator,
     Error404Component,
     SessionListComponent,
     CollapsibleWellComponent,
@@ -76,7 +78,7 @@ const jQuery: Toastr = window["$"];
   ],
   bootstrap: [EventsAppComponent],
 })
-export class AppModule {}
+export class AppModule { }
 
 export function checkDirtyState(component: CreateEventComponent): boolean {
   if (component.isDirty)
