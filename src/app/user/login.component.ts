@@ -18,7 +18,7 @@ export class LoginComponent {
     constructor(private authService: AuthService, private router: Router) {
     }
 
-    login(formValues) {
+    login(formValues: { userName: string, password: string }): void {
         this.authService.loginUser(formValues.userName, formValues.password).subscribe(resp => {
             if (!resp) {
                 this.loginInvalid = true;
@@ -27,7 +27,7 @@ export class LoginComponent {
             }
         });
     }
-    cancel() {
+    cancel(): void {
         this.router.navigate(['events'])
     }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, inject } from '@angular/core'
+import { Component, OnInit, Inject } from '@angular/core'
 import { FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { TOASTR_TOKEN, Toastr } from '../common/toastr.service';

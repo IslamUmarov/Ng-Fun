@@ -33,7 +33,7 @@ import { IEvent } from "./shared/event.model";
 export class CreateEventComponent {
   newEvent;
   event: IEvent;
-  isDirty: boolean = true;
+  isDirty = true;
   constructor(private router: Router, private eventService: EventService) { }
 
   saveEvent(fromValues) {

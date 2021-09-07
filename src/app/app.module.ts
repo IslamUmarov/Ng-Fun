@@ -26,8 +26,8 @@ import { FormBuilder, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
 import { VoterService } from "./events/event-details/voter.service";
 
-let toastr: Toastr = window["toastr"];
-let jQuery: Toastr = window["$"];
+const toastr: Toastr = window["toastr"];
+const jQuery: Toastr = window["$"];
 @NgModule({
   imports: [
     BrowserModule,
